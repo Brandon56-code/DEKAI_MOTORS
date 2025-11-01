@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEKAI MOTORS - Delivering Luxury Affordably</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #1a1a1a;
+            background: -webkit-linear-gradient(135deg, #1a1a1a, #000);
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #d4af37;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            background: #0a0a0a;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #d4af37;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .slideshow-section {
+            padding: 60px 20px;
+            background: #000;
+        }
+
+        .category {
+            margin-bottom: 80px;
+        }
+
+        .category-title {
+            font-size: 36px;
+            color: #d4af37;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 50px rgba(212, 175, 55, 0.4);
+        }
+
+        .slide {
+            display: none;
+            position: relative;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            color: #fff;
+        }
+
+        .slide-caption h3 {
+            font-size: 28px;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .slide-caption p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(212, 175, 55, 0.9);
+            color: #000;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s;
+            z-index: 100;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: #d4af37;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .dots {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 8px;
+            background-color: #444;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: #d4af37;
+            transform: scale(1.4);
+        }
+
+        .contact-section {
+            padding: 80px 20px;
+            background: #1a1a1a;
+            background: -webkit-linear-gradient(135deg, #1a1a1a, #000);
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 40px;
+            color: #d4af37;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .contact-item {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .contact-item h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .contact-item a:hover {
+            color: #d4af37;
+        }
+
+        .contact-item p {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            background: #d4af37;
+            color: #000;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .social-btn:hover {
+            background: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+        }
+
+        footer {
+            background: #000;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 3px solid #d4af37;
+        }
+
+        footer p {
+            color: #888;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 32px;
+            }
+
+            .tagline {
+                font-size: 14px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .category-title {
+                font-size: 24px;
+            }
+
+            .slide img {
+                height: 350px;
+            }
+
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 18px;
+            }
+
+            .prev {
+                left: 10px;
+            }
+
+            .next {
+                right: 10px;
+            }
+
+            .contact-section h2 {
+                font-size: 28px;
+            }
+
+            .social-btn {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DEKAI MOTORS</div>
+        <div class="tagline">Delivering Luxury Affordably</div>
+    </header>
+
+    <section class="hero">
+        <h2>Your Trusted Luxury Partners</h2>
+        <p>Get in touch with DEKAI MOTORS today for all local car dealership and international importation of luxury cars worldwide. We specialize in bringing you the finest vehicles at prices that redefine luxury affordability.</p>
+    </section>
+
+    <section class="slideshow-section">
+        <div class="category">
+            <h2 class="category-title">Luxury Sedans</h2>
+            <div class="slideshow-container" id="sedans">
+                <div class="slide active">
+                    <img src="https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=1200&h=600&fit=crop" alt="Mercedes-Benz S-Class">
+                    <div class="slide-caption">
+                        <h3>Mercedes-Benz S-Class</h3>
+                        <p>The pinnacle of luxury and comfort</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1200&h=600&fit=crop" alt="BMW 7 Series">
+                    <div class="slide-caption">
+                        <h3>BMW 7 Series</h3>
+                        <p>Performance meets elegance</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&h=600&fit=crop" alt="Audi A8">
+                    <div class="slide-caption">
+                        <h3>Audi A8</h3>
+                        <p>Technology and sophistication combined</p>
+                    </div>
+                </div>
+                <button class="nav-btn prev" onclick="moveSlide('sedans', -1)">&#10094;</button>
+                <button class="nav-btn next" onclick="moveSlide('sedans', 1)">&#10095;</button>
+            </div>
+            <div class="dots" id="sedans-dots"></div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">Luxury SUVs</h2>
+            <div class="slideshow-container" id="suvs">
+                <div class="slide active">
+                    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&h=600&fit=crop" alt="Range Rover">
+                    <div class="slide-caption">
+                        <h3>Range Rover</h3>
+                        <p>Unparalleled luxury and capability</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=1200&h=600&fit=crop" alt="BMW X7">
+                    <div class="slide-caption">
+                        <h3>BMW X7</h3>
+                        <p>Spacious luxury for the whole family</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1611566026373-c6c8da0ea861?w=1200&h=600&fit=crop" alt="Mercedes-Benz GLS">
+                    <div class="slide-caption">
+                        <h3>Mercedes-Benz GLS</h3>
+                        <p>The S-Class of SUVs</p>
+                    </div>
+                </div>
+                <button class="nav-btn prev" onclick="moveSlide('suvs', -1)">&#10094;</button>
+                <button class="nav-btn next" onclick="moveSlide('suvs', 1)">&#10095;</button>
+            </div>
+            <div class="dots" id="suvs-dots"></div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">Sports Cars</h2>
+            <div class="slideshow-container" id="sports">
+                <div class="slide active">
+                    <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&h=600&fit=crop" alt="Porsche 911">
+                    <div class="slide-caption">
+                        <h3>Porsche 911</h3>
+                        <p>Iconic performance and design</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&h=600&fit=crop" alt="Ferrari">
+                    <div class="slide-caption">
+                        <h3>Ferrari</h3>
+                        <p>The ultimate driving experience</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200&h=600&fit=crop" alt="Lamborghini">
+                    <div class="slide-caption">
+                        <h3>Lamborghini</h3>
+                        <p>Pure adrenaline and luxury</p>
+                    </div>
+                </div>
+                <button class="nav-btn prev" onclick="moveSlide('sports', -1)">&#10094;</button>
+                <button class="nav-btn next" onclick="moveSlide('sports', 1)">&#10095;</button>
+            </div>
+            <div class="dots" id="sports-dots"></div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>Get In Touch Today</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>📞 Phone</h3>
+                <a href="tel:+254758662216">+254 758 662 216</a>
+            </div>
+            <div class="contact-item">
+                <h3>📨 Email</h3>
+                <a href="mailto:dekaimotors@gmail.com">dekaimotors@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <h3>📍 Location</h3>
+                <p>Nairobi, Kenya</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/19XP3Mca7m/" target="_blank" class="social-btn">Facebook</a>
+            <a href="https://www.instagram.com/dekaimotors?igsh=MW81dGpyNHFzbTZtbQ==" target="_blank" class="social-btn">Instagram</a>
+            <a href="https://www.tiktok.com/@dekaimotorsfamily?_t=ZM-8tSoNyELEkn&_r=1" target="_blank" class="social-btn">TikTok</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DEKAI MOTORS. All rights reserved. Delivering Luxury Affordably.</p>
+    </footer>
+
+    <script>
+        var slideshows = {
+            sedans: { index: 0, total: 3 },
+            suvs: { index: 0, total: 3 },
+            sports: { index: 0, total: 3 }
+        };
+
+        function createDots() {
+            var categories = ['sedans', 'suvs', 'sports'];
+            
+            for (var i = 0; i < categories.length; i++) {
+                var category = categories[i];
+                var dotsContainer = document.getElementById(category + '-dots');
+                var total = slideshows[category].total;
+                
+                for (var j = 0; j < total; j++) {
+                    var dot = document.createElement('span');
+                    dot.className = j === 0 ? 'dot active' : 'dot';
+                    dot.setAttribute('data-category', category);
+                    dot.setAttribute('data-index', j);
+                    dot.onclick = function() {
+                        var cat = this.getAttribute('data-category');
+                        var idx = parseInt(this.getAttribute('data-index'));
+                        showSlide(cat, idx);
+                    };
+                    dotsContainer.appendChild(dot);
+                }
+            }
+        }
+
+        function moveSlide(category, direction) {
+            var slideshow = slideshows[category];
+            var newIndex = slideshow.index + direction;
+            
+            if (newIndex < 0) {
+                newIndex = slideshow.total - 1;
+            } else if (newIndex >= slideshow.total) {
+                newIndex = 0;
+            }
+            
+            showSlide(category, newIndex);
+        }
+
+        function showSlide(category, index) {
+            var container = document.getElementById(category);
+            var slides = container.getElementsByClassName('slide');
+            var dotsContainer = document.getElementById(category + '-dots');
+            var dots = dotsContainer.getElementsByClassName('dot');
+            
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            slideshows[category].index = index;
+        }
+
+        function autoPlay() {
+            var categories = ['sedans', 'suvs', 'sports'];
+            for (var i = 0; i < categories.length; i++) {
+                moveSlide(categories[i], 1);
+            }
+        }
+
+        createDots();
+        setInterval(autoPlay, 5000);
+    </script>
+</body>
+</html>
